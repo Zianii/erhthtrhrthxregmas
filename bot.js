@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '%'
+const prefix = 'x'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -33,7 +33,23 @@ client.on('ready', () => {
 
 
 const adminprefix = "x";
-const devs = ['283580465862934539','376792971573460996'];
+const devs = ['283580465862934539','283580465862934539'];
+client.on('message', message => {
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    
+if (message.content.startsWith(adminprefix + 'setgame')) {
+  client.user.setGame(argresult);
+    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
+} else   
+if (message.content.startsWith(adminprefix + 'setT')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/xmas");
+    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
+}
+});
+
+const adminprefix = "X";
+const devs = ['283580465862934539','283580465862934539'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
